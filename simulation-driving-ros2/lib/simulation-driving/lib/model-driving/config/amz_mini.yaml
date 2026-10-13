@@ -1,0 +1,44 @@
+info:
+  name: AmzMini
+inertia: ### Mass and inertia parameters ###
+  mass: 0.144                     # (kg)
+  Izz: 0.00019863                 # (kg * m^2) ------------- TO BE IDENTIFIED -------------
+
+geometry: ### Geometrical vehicle parameters ###
+  cross_area: 0.0015              # (m^2) Cross area looking at the vehicle from the front
+  wheelbase: 0.098                # (m) Distance from rear axle to front axle
+  l_r: 0.051                      # (m) Distance from rear axle to center of mass ------------- TO BE IDENTIFIED -------------
+
+resistance:
+  c_friction: 0.1                 # Random friction parameter
+  c_drag: 0.21                    # Aerodynamic drag parameter
+
+actuation:  ###
+  steering_angle_offset: 0.02585  # (rad) Steering angle at zero command
+
+  ## Actuator dynamics
+  steering_angle_gain: 0.19199    # (rad) Gain from normalized steering (-1 ... 1) to steering angle
+  steering_angle_TC: 0.0434       # (s) Time constant of linear 1st order steering angle dynamics
+
+  speed_gain: 8.6695              # (m/s) Gain from normalized throttle (0 ... 1) to end speed
+  speed_TC: 0.3340                # (s) Time constant of linear 1st order speed dynamics
+
+  ## Acceleration-based model
+  steering_angle_max: 0.19199     # (rad) Maximum steering angle according to steering_angle_gain
+  acceleration_max: 8             #
+
+  ## Powertrain
+  powertrain_a_max: 11.0          # (m/s^2) Maximum acceleration the powertrain can produce (at V = 0)
+  powertrain_a_neg_max: 5.5       # (m/s^2) Maximum reverse acceleration the powertrain can produce (at V = 0)
+
+tires:
+  Bf: 0
+  Cf: 0
+  Df: 10
+
+  Br: 0
+  Cr: 0
+  Dr: 10.4
+
+noise:
+  turb_ref_length: 1.0

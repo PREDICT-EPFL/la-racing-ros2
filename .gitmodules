@@ -1,0 +1,21 @@
+[submodule "utils-racing/la_cmake"]
+	path = utils-racing/la_cmake
+	url = https://github.com/PREDICT-EPFL/la_cmake.git
+[submodule "micro_ros_espidf_component"]
+	path = la_racing_ros2/firmware/src/micro_ros_espidf_component
+	url = https://github.com/micro-ROS/micro_ros_espidf_component.git
+[submodule "la_cmake_estimators"]
+	path = la_racing_ros2/src/common/estimators/lar_kalman_estimators/la_cmake
+	url = https://github.com/PREDICT-EPFL/la_cmake.git
+[submodule "micro_ros_agent"]
+	path = la_racing_ros2/src/ros2/micro_ros/micro_ros_agent
+	url = https://github.com/micro-ROS/micro-ROS-Agent.git
+[submodule "micro_ros_msgs"]
+	path = la_racing_ros2/src/ros2/micro_ros/micro_ros_msgs
+	url = https://github.com/micro-ROS/micro_ros_msgs.git
+[submodule "mocap_optitrack"]
+	path = la_racing_ros2/src/ros2/mocap_optitrack
+	url = https://github.com/PREDICT-EPFL/mocap_optitrack.git
+[submodule "la-common"]
+	path = la-common
+	url = https://github.com/PREDICT-EPFL/la-common.git

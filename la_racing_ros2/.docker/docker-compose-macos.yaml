@@ -1,0 +1,20 @@
+version: '3'
+services:
+  la_racing:
+    image: la_racing:latest
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: la_racing
+    volumes:
+      - .:/la_racing_ws
+      - /tmp/.X11-unix:/tmp/.X11-unix:rw
+    env_file:
+      - .display
+    security_opt:
+      - seccomp:unconfined
+    privileged: true
+    tty: true
+    ports:
+      - 8888:8888/udp
+      - 2222:2222

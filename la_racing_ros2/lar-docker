@@ -1,0 +1,131 @@
+#!/usr/bin/env bash
+set -euo pipefail
+
+function up() {
+    option=$1
+    if [[ "$OSTYPE" == "linux-gnu"* ]]; then # Linux
+        xhost +local:root || echo "Cannot connect to display. Run headless."
+        ln -sf .docker/docker-compose-ubuntu.yaml docker-compose.yaml
+    elif [[ "$OSTYPE" == "darwin"* ]]; then # Mac OSX
+        ip=$(ifconfig en0 | grep inet | awk '$1=="inet" {print $2}')
+        echo "DISPLAY=$ip:0" >.display
+        xhost + $ip
+        ln -sf .docker/docker-compose-macos.yaml docker-compose.yaml
+    else
+        printf "Unknown OS detected."
+        exit 1
+    fi
+    case $option in
+    -b | --build)
+        COMPOSE_DOCKER_CLI_BUILD=1 DOCKER_BUILDKIT=1 docker compose up --pull never --build --detach
+        ;;
+    -p | --pull)
+        COMPOSE_DOCKER_CLI_BUILD=1 DOCKER_BUILDKIT=1 docker compose up --pull missing --no-build --detach
+        ;;
+    *)
+        printf "usage: lar-docker up [-b/-p]\n"
+        printf "\noptions:\n\n"
+        printf "    -b | --build:    Always builds la_racing image from source.\n"
+        printf "    -p | --pull:     Pull la_racing image from repository.\n"
+        exit 1
+        ;;
+    esac
+    shift
+}
+
+function start() {
+    docker compose start
+}
+
+function stop() {
+    docker compose stop
+}
+
+function down() {
+    docker compose down
+    if [[ "$OSTYPE" == "linux-gnu"* ]]; then # Linux
+        xhost -local:root
+    elif [[ "$OSTYPE" == "darwin"* ]]; then # Mac OSX
+        ip=$(ifconfig en0 | grep inet | awk '$1=="inet" {print $2}')
+        xhost - $ip
+        if [ -f .display ]; then
+            rm .display
+        fi
+    else
+        printf "Unknown OS detected."
+        exit 1
+    fi
+}
+
+function clean() {
+    docker system prune
+    docker image rm la_racing
+}
+
+function attach() {
+    n_running=$(docker ps | grep la_racing | wc -l | xargs)
+    if [ "${n_running}" -eq 0 ]; then
+        printf "There are no la_racing container running.\n\n"
+        usage
+    elif [ "${n_running}" -eq 1 ]; then
+        container_id=$(docker ps | grep la_racing | awk '{print $1}')
+        printf "Attaching to container with ID: ${container_id}\n"
+        docker exec -it ${container_id} bash
+    else
+        printf "There are multiple la_racing container running. Stop all but one.\n"
+    fi
+}
+
+function pwd_is_root() {
+    if [[ -f Dockerfile && -f .dockerignore ]]; then
+        true
+    else
+        false
+    fi
+}
+
+function usage() {
+    printf "usage: lar-docker <command> [-h]\n"
+    printf "\nthere are the following commands:\n\n"
+    printf "    up [-b/-p]:  Starts docker container with la_racing environment.\n"
+    printf "                 -b | --build: build la_racing Docker image from scratch.\n"
+    printf "                 -p | --pull: pull la_racing Docker image from registry.\n"
+    printf "    start:       Starts existing docker containers.\n"
+    printf "    stop:        Shuts down docker container without destrying them.\n"
+    printf "    down:        Shuts down docker container and destroyes them.\n"
+    printf "    clean:       Delete the previously built Docker image. 'lar-docker up' will rebuild the image.\n"
+    printf "    attach:      Attach to a running container (only works for a single running container).\n"
+}
+if [[ -z "${1-}" ]]; then
+    usage
+    exit 0
+fi
+
+while [[ -n "${1-}" ]]; do
+    if ! $(pwd_is_root); then
+        printf "Cannot run docker in this folder! Change to the highest-level la_racing folder.\n"
+        exit 1
+    fi
+
+    case $1 in
+    up)
+        up "${2---build}"
+        shift
+        ;;
+    start) start ;;
+    stop) stop ;;
+    down) down ;;
+    run) run ;;
+    clean) clean ;;
+    attach) attach ;;
+    -h | --help)
+        usage
+        exit 0
+        ;;
+    *)
+        usage
+        exit 1
+        ;;
+    esac
+    shift
+done

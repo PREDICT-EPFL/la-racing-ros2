@@ -1,0 +1,25 @@
+<?xml version="1.0"?>
+<package format="2">
+    <name>model_flight</name>
+    <version>1.0.0</version>
+    <description>Flight models implemented with Eigen and Casadi</description>
+
+    <maintainer email="johannes.waibel@epfl.ch">Johannes Waibel</maintainer>
+    <license>EPFL</license>
+    <author email="johannes.waibel@epfl.ch">Johannes Waibel</author>
+    <author email="colin.jones@epfl.ch">Colin Jones</author>
+
+    <buildtool_depend>catkin</buildtool_depend>
+
+    <build_depend>Casadi</build_depend>
+    <exec_depend>Casadi</exec_depend>
+
+    <build_depend>Eigen3</build_depend>
+    <exec_depend>Eigen3</exec_depend>
+
+    <build_depend>yaml-cpp</build_depend>
+    <exec_depend>yaml-cpp</exec_depend>
+
+    <export>
+    </export>
+</package>

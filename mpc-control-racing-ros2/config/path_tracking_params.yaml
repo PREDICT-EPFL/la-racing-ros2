@@ -1,0 +1,23 @@
+name: path_tracking
+
+raceline_name: 'la_raceline_spline.yaml'
+
+horizon_tf: 0.7
+
+# Weights
+R_diag: [7.0, 0.1]
+R_du_diag: [0.0, 0.0] #[1, 0.1]
+
+mayer_factor: 10
+
+W_diag_path_tracking: [1, 80] #[60, 120] # 1e1 1e2
+w_speed_tracking: 100
+
+# Bounds
+lat_acc_max: 4
+car_width: 0.22
+
+throttle_min: 0.05
+throttle_max: 0.5
+
+lon_acc_max: 3.0

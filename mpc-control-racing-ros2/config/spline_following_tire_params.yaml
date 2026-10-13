@@ -1,0 +1,53 @@
+name: spline_following_tire
+
+raceline_name: 'la_track_spline2.yaml'
+
+horizon_tf: 0.9
+
+# Weights
+R_diag: [0.1, 0.1, 0.1]
+R_du_diag: [0, 0, 0] # [1, 0.1, 0]
+R_prev_diag: [0, 0]
+
+mayer_factor: 5
+
+w_path_tracking: 10
+w_path_progression: 20
+
+W_diag_v_body: [0, 10]
+w_turn_rate : 0.5
+
+w_slack_contour: 1.5e2 #5e1 laopt
+
+# Bounds
+lat_acc_max: 0.10
+car_width: 0.22
+
+throttle_min: 0.15
+throttle_max: 0.6
+
+#raceline_name: 'la_raceline_spline.yaml'
+#
+#horizon_tf: 0.7
+#
+## Weights
+#R_diag: [1, 0.1, 0.1]
+#R_du_diag: [0, 0, 0] # [1, 0.1, 0]
+#R_prev_diag: [0, 0]
+#
+#mayer_factor: 5
+#
+#w_path_tracking: 100
+#w_path_progression: 3.2
+#
+#w_slack_contour: 1e3
+#
+#W_diag_v_body: [0.1, 0.1]
+#w_turn_rate : 0.1
+#
+## Bounds
+#lat_acc_max: 3.0
+#car_width: 0.10
+#
+#throttle_min: 0.15
+#throttle_max: 0.5

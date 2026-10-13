@@ -1,0 +1,8 @@
+.idea
+.vscode
+.DS_Store
+.m~
+__pycache__/
+acados_ocp.json
+c_generated_code/
+codegen/

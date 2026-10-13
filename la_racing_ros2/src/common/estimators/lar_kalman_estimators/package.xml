@@ -1,0 +1,17 @@
+<?xml version="1.0"?>
+<?xml-model href="http://download.ros.org/schema/package_format3.xsd" schematypens="http://www.w3.org/2001/XMLSchema"?>
+<package format="3">
+  <name>lar_kalman_estimators</name>
+  <version>1.0.0</version>
+  <description>Various kalman filter implementations</description>
+  <maintainer email="roland.schwan@epfl.ch">Roland Schwan</maintainer>
+  <license>BSD-2-Clause</license>
+
+  <build_export_depend>Eigen3</build_export_depend>
+
+  <buildtool_depend>cmake</buildtool_depend>
+
+  <export>
+    <build_type>cmake</build_type>
+  </export>
+</package>

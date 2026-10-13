@@ -1,0 +1,30 @@
+# This file goes to mocap_optitrack/config
+# Recommended: Call mocap_create_symlink.sh to create a symlink to this
+# file in mocap_optitrack/config. (Need to delete existing file first.)
+
+#
+# Definition of all trackable objects
+# Identifier corresponds to Streaming ID set in Motive
+#
+mocap_node:
+    ros__parameters:
+        rigid_bodies:
+#            '5':
+#                pose: /mocap/car/pose
+            '14':
+                pose: /mocap/car/pose
+
+            '6':
+#                pose: /mocap/track/pose
+                pose2d: /mocap/track/pose2d
+#                odom: /mocap/track/odom
+#                tf: tf
+#                child_frame_id: /mocap/track/base_link
+#                parent_frame_id: world
+        free_markers: true # set to true to publish marker positions for markers not in rigid bodies
+        optitrack_config:
+                # should match the Multicast Interface in Motive streaming panel
+                multicast_address: 239.255.42.120
+                command_port: 1510
+                data_port: 1511
+                enable_optitrack: true

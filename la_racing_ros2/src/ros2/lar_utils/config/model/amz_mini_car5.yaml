@@ -1,0 +1,62 @@
+info:
+  name: AmzMiniCar5
+inertia: ### Mass and inertia parameters ###
+  mass: 0.144                     # (kg)
+  Izz: 0.00019863                 # (kg * m^2) ------------- TO BE IDENTIFIED -------------
+
+geometry: ### Geometrical vehicle parameters ###
+  cross_area: 0.000032            # (m^2) Cross area looking at the vehicle from the front
+  wheelbase: 0.098                # (m) Distance from rear axle to front axle
+  l_r: 0.051                      # (m) Distance from rear axle to center of mass ------------- TO BE IDENTIFIED -------------
+
+resistance:
+  c_friction: 0.1                 # Random friction parameter
+  c_drag: 0.8                     # Aerodynamic drag parameter
+
+  Vr0: 1.6                        # Reference speed for resistance tuning
+  CR0: 0.0657 # 0.5179            # (N) Resistance at Vr0
+  CRv: 0.45 # 0.05                # (N/(m/s)) Resistance gradient for speed diff from Vr0
+
+  # CarSpeedModel
+  c_res0: 0.2089                  # Rolling resistance for any nonzero speed (N)
+  c_resV: 0                       # Rolling resistance constant on speed (N/(m/s))
+  c_resV2: 0.0397                 # Rolling resistance constant on speed squared (N/(m/s)^2)
+
+actuation:
+  steering_angle_offset: -0.0023  # (rad) Steering angle at zero command
+
+  ## Actuator dynamics
+  steering_angle_gain: 0.3083     # (rad) Gain from normalized steering (-1 ... 1) to steering angle
+  steering_angle_TC: 0.0434       # (s) Time constant of linear 1st order steering angle dynamics
+
+  speed_gain: 9.9777              # (m/s) Gain from normalized throttle (0 ... 1) to end speed
+  speed_TC: 2.4425                # (s) Time constant of linear 1st order speed dynamics
+  speed_ctrl_FF: 0.4              # ESC feedforward gain on reference speed
+  speed_ctrl_P: 0.06055           # ESC proportional gain on speed error
+
+  ## Acceleration-based model
+  steering_angle_max: 0.19199     # (rad) Maximum steering angle according to steering_angle_gain
+  acceleration_max: 0.45          #
+
+  ## Powertrain
+  powertrain_a_max: 11.0          # (m/s^2) Maximum acceleration the powertrain can produce (at V = 0)
+  powertrain_a_neg_max: 5.5       # (m/s^2) Maximum reverse acceleration the powertrain can produce (at V = 0)
+
+  # CarSpeedModel
+  c_Vcmd: 9.5                     # Speed gain (speed command coefficient)
+  FF_Vcmd: 0.1777                 # Feedforward gain on commanded speed
+  FF_V: 0                         # Feedforward gain on present speed
+  P_V: 0                          # Proportional gain on speed error
+
+tires:
+  ## Johannes
+  Bf: 8.1777
+  Cf: 1
+  Df: 0.9333
+
+  Br: 8.2414
+  Cr: 1
+  Dr: 0.8416
+
+noise:
+  turb_ref_length: 1.0

@@ -1,0 +1,24 @@
+<?xml version="1.0"?>
+<package format="3">
+    <name>mpc_control_racing_benchmark</name>
+    <version>1.0.0</version>
+    <description>MPC racing benchmark for AMENT build system</description>
+    <maintainer email="johannes.waibel@epfl.ch">Johannes Waibel</maintainer>
+    <license>TBD</license>
+
+    <buildtool_depend>ament_cmake</buildtool_depend>
+
+    <depend>Eigen3</depend>
+    <depend>utils_racing</depend>
+    <depend>ament_index_cpp</depend>
+    <depend>lar_msgs</depend>
+    <depend>mpc_control_racing_ros2</depend>
+    <depend>simulation_driving_ros2</depend>
+
+    <test_depend>ament_lint_auto</test_depend>
+    <test_depend>ament_lint_common</test_depend>
+
+    <export>
+        <build_type>ament_cmake</build_type>
+    </export>
+</package>

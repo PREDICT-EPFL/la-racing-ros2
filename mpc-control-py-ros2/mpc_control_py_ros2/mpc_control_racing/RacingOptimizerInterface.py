@@ -1,0 +1,5 @@
+from mpc_control_py_ros2.mpc_control_racing.RacingOcpParams import RacingOcpParams
+from mpc_control_py_ros2.mpc_control_racing.OptimizerInterface import OptimizerInterface
+
+class RacingOptimizerInterface(RacingOcpParams, OptimizerInterface):
+    pass

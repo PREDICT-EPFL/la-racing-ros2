@@ -1,0 +1,55 @@
+name: spline_following
+
+raceline_name: 'la_track_spline2.yaml'
+
+horizon_tf: 1.8
+
+# Weights
+R_diag: [1, 1, 1]
+#R_du_diag: [0.01, 0.01, 0] # [1, 0.1, 0]
+R_du_diag: [0, 0, 0]
+R_prev_diag: [0, 0]
+
+mayer_factor: 5
+
+#w_path_tracking: 1 # For velocity spline tuning
+#w_path_tracking: 50 # For offline velocity spline racing
+w_path_tracking: 10 # For trackbounds
+w_path_progression: 5
+
+w_slack_contour: 1e3
+
+# Bounds
+lat_acc_max: 3.0
+car_width: 0.10
+
+throttle_min: 0.15
+throttle_max: 0.4
+
+throttle_to_speed: 8.7
+
+#raceline_name: 'la_raceline_spline.yaml'
+#
+#horizon_tf: 1.0
+#
+## Weights
+#R_diag: [1, 1, 1]
+##R_du_diag: [0.01, 0.01, 0] # [1, 0.1, 0]
+#R_du_diag: [0, 0, 0] # [1, 0.1, 0]
+#R_prev_diag: [0, 0]
+#
+#mayer_factor: 10
+#
+#w_path_tracking: 50
+#w_path_progression: 2
+#
+#w_slack_contour: 1e3
+#
+## Bounds
+#lat_acc_max: 3.0
+#car_width: 0.10
+#
+#throttle_min: 0.05
+#throttle_max: 0.5
+#
+#throttle_to_speed: 8.7

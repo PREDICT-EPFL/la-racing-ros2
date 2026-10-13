@@ -1,0 +1,28 @@
+<?xml version="1.0"?>
+<package format="3">
+    <name>main_control_racing_ros2</name>
+    <version>1.0.0</version>
+    <description>Main racing control node for AMENT build system</description>
+    <maintainer email="johannes.waibel@epfl.ch">Johannes Waibel</maintainer>
+    <license>TBD</license>
+
+    <buildtool_depend>ament_cmake</buildtool_depend>
+
+    <depend>rclcpp</depend>
+    <depend>ament_index_cpp</depend>
+    <depend>geometry_msgs</depend>
+    <depend>sensor_msgs</depend>
+
+    <depend>utils_racing</depend>
+    <depend>mpc_msgs_racing_ros2</depend>
+    <depend>lar_msgs</depend>
+
+    <depend>Eigen3</depend>
+
+    <test_depend>ament_lint_auto</test_depend>
+    <test_depend>ament_lint_common</test_depend>
+
+    <export>
+        <build_type>ament_cmake</build_type>
+    </export>
+</package>

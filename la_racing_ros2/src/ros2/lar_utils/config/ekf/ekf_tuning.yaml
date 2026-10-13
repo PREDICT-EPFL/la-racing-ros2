@@ -1,0 +1,17 @@
+state_cov:
+  x: 1e-2  # 2e-4  ... >> 1e-2 <<  ... 2e-2
+  y: 1e-2
+  angle: 1e-2
+
+  x_dot: 1.3e-04
+  y_dot: 1.3e-04
+  angle_dot: 1.5e-04
+
+  x_dot_dot: 5.5e+03
+  y_dot_dot: 5.5e+03
+  angle_dot_dot: 4.4e+03
+
+measurement_cov:
+  x: 2.3e-06
+  y: 2.3e-06
+  angle: 2.3e-06

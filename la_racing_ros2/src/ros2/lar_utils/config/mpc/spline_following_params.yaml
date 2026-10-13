@@ -1,0 +1,11 @@
+name: spline_following
+#horizon: 1.0 # Don't use because casadi controllers can't update it after construction
+w_path_tracking: 10
+w_path_progression: 0.1
+R_diag: [1e-3, 1e-3, 1e-3]
+mayer_factor: 1
+
+lat_acc_max: 1.0
+
+throttle_min: 0.15
+throttle_max: 0.4
